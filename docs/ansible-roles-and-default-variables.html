@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ansible Roles and Default Variables - Ops Factory</title>
+        <meta charset="utf-8" />
+        <link href="http://10.1.1.218:8000/theme/css/cosmo.bootstrap.min.css" rel="stylesheet" />
+        <link href="http://10.1.1.218:8000/theme/css/style.css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    </head>
+
+    <body id="index" class="archive">
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class=""><a href="http://10.1.1.218:8000">Home</a></li>
+                    <li><a href="http://10.1.1.218:8000/archives.html">Archives</a></li>
+                </ul>
+                <h3 class="text-muted"><a href="http://10.1.1.218:8000">Ops Factory</a></h3>
+				<h2 class="text-muted"></h2>
+             </div>
+<section id="content" class="article content">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://10.1.1.218:8000/ansible-roles-and-default-variables.html" rel="bookmark"
+         title="Permalink to Ansible Roles and Default Variables">Ansible Roles and Default Variables</a></h2>
+ 
+  </header>
+  
+     
+  <div class="entry-content">
+    <p>Roles are a critical part of Ansible: they wrap up functionality into a nice little parcel which is easy to manage, maintain, <a href="https://git-scm.com">version control</a> and share. Adhoc commands and a directory full of Playbooks can of course be very useful, but Ansible really shines when Roles are introduced to a code base. Writing a Role well only requires following some basic best practices.</p>
+<p>Let's start off by looking at default variables for a Role.</p>
+<h2>function(a, b, c);</h2>
+<p>When you provide someone with a Role, they will very likely need to customise its behaviour to suit their own requirements. It's the same when you execute a function in some library: the function or method offers you some algorithm that solves a problem, but you must provide the inputs. Your Role solves some infrastructure level problem, you just have to provide the correct inputs.</p>
+<p><strong>A Role's variables are like a function's parameters: they're the interface to your solution.</strong></p>
+<p>What this means for you as a Role developer is simple: ensure you're providing default variables for all inputs and all the external data the Role needs, allowing it to execute without errors. This means allowing it to execute cleanly, end-to-end, without errors or warnings, whether or not the state results in valid operations.</p>
+<h3>Edge Cases</h3>
+<p>With functions, most of the parameters aren't optional or ship with default values. In Python you do often see default values for optional variables, but it's not always the case. If you find you're writing a Role that can't work with a default value and simply must be given a value: <strong>document this fact in the <code>README.md</code> file</strong></p>
+<p>I understand not every situation allows you to develop Roles in such a way, and that's fine. Just try your best to write code that the next person will enjoy working with.</p>
+<h2>Validation</h2>
+<p>Because a Role with default variables (that haven't been overridden) can execute against live infrastructure without reporting any problems, as discussed above, you could be forgiven for making the assumption the infrastructure was setup and placed into a desired state. Without testing this assertion, however, you never really know the state of your infrastructure.</p>
+<p>This is why testing is important when developing a Role. It's why we use <a href="https://github.com/metacloud/molecule">Molecule</a> for testing Roles during development and for idempotence; and it's why we use <a href="https://github.com/aelsabbahy/goss">Gos</a> to ensure when we feed in inputs to our Roles the results that come out the other end are valid.</p>
+<p>Software engineers and developers test their code, <strong>so you should too.</strong></p>
+<h2>Namespacing</h2>
+<p>When writing your default variables, namespace them. Ansible's memory model for variables is essentially <strong>flat and global.</strong> That means you could potentially run the risk of causing mahem if you have a variable to your Role called <code>java_version</code> which is then used by a second Role in your Play(book).</p>
+<p>When you introduce a namespace to your Role's variables, you remove this risk. And namespacing isn't technically challenging or difficult, it's just a simple rule to follow: use the Role's name in the variable.</p>
+<p>If we assume a Role called <code>mysql</code>, then we can assume a <code>defaults/main.yml</code> that might look a bit like this:</p>
+<div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">mysql_version</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="l l-Scalar l-Scalar-Plain">mysql_data_directory</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/data/mysql</span>
+<span class="l l-Scalar l-Scalar-Plain">mysql_server_only</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+
+
+<p>And so on.</p>
+<h2>Documentation</h2>
+<p>The final point I want to touch on is documentation. When you provide default variables in your Role, you provide a form of documentation. It's documentation in its simpliest form, but it is documentation. You could even be forgiven for omitting them from the <code>README.md</code> file if you comment them sufficiently. </p>
+<p>I'll talk about documentation in another post.</p>
+<h2>In Summary</h2>
+<p>When writing a Role, provide and namespace your default variables. Also allow the Role to be execute end-to-end without overriding any of the default variables, and result in a green screen.</p>
+  </div><!-- /.entry-content -->
+   <footer class="post-info text-muted">
+    Posted on <abbr class="published" title="2017-02-24T18:00:00+10:00">
+      Fri 24 February 2017
+    </abbr>
+    <address class="vcard author">
+      by <a class="url fn" href="http://10.1.1.218:8000/author/michael-crilly.html">Michael Crilly</a>
+    </address> in <a href="http://10.1.1.218:8000/category/ansible.html">Ansible</a> Tagged <a href="http://10.1.1.218:8000/tag/ansible.html">ansible </a><a href="http://10.1.1.218:8000/tag/confmg.html">confmg </a>  </footer><!-- /.post-info -->
+</section>
+            <footer id="contentinfo" class="footer">
+                    <nav class="pull-right bottom-nav">
+                        <a href="http://10.1.1.218:8000/None">RSS</a>
+                    </nav>
+                    <address id="about" class="vcard body">
+                    &copy; <a href="http://10.1.1.218:8000">Ops Factory</a> Proudly powered by <a href="http://getpelican.com/">Pelican</a>
+                    </address><!-- /#about -->
+            </footer><!-- /#contentinfo -->
+        </div><!-- container -->
+    </body>
+</html>
