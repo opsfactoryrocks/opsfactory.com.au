@@ -9,7 +9,7 @@ Status: draft
 
 When I first started programming some 20 years ago, testing was never a thing I had heard of. I'm not certain it even existed as a concept back then. In fact a recent talk from [John Romero](http://blog.felipe.rs/2017/02/25/id-software-programming-principles/) of [DOOM and Quake fame](https://en.wikipedia.org/wiki/Id_Software) clearly demonstrated that testing essentially boiled down to constantly building/compiling and running your software, over and over. I doubt TDD and BDD were a thing.
 
-Now we're at the point in our industry when testing is a big deal, and rightly so. I believe TDD, when [considered carefully](http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html), or something of its ilk, is an important means of testing whether or not your future changes are safe; whether or not business requirements are still being met; and whether or not a new feature or bug patch introduces regression.
+Now we're at the point in our industry when testing is a big deal, and rightly so. I believe TDD, when [considered carefully](http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html), or something of its ilk, is an important means of testing whether or not your future changes are safe; whether or not business requirements are still being met; and whether or not a new feature or patch introduces regression.
 
 I've wanted TDD/BDD for infrastructure and configuration management for some time now, for the same reasons as above, and these days we have a great set of tools for introducing tests to our Ansible Roles. Let's take a look at these tools, delve into them a bit, and see what they can do.
 
