@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Testing Ansible Roles with Molecule - Ops Factory</title>
+        <meta charset="utf-8" />
+        <link href="http://opsfactory.com.au/theme/css/cosmo.bootstrap.min.css" rel="stylesheet" />
+        <link href="http://opsfactory.com.au/theme/css/style.css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    </head>
+
+    <body id="index" class="archive">
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class=""><a href="http://opsfactory.com.au">Home</a></li>
+                    <li><a href="http://opsfactory.com.au/archives.html">Archives</a></li>
+                </ul>
+                <h3 class="text-muted"><a href="http://opsfactory.com.au">Ops Factory</a></h3>
+				<h2 class="text-muted"></h2>
+             </div>
+<section id="content" class="article content">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://opsfactory.com.au/drafts/ansible-role-testing-with-molecule.html" rel="bookmark"
+         title="Permalink to Testing Ansible Roles with Molecule">Testing Ansible Roles with Molecule</a></h2>
+ 
+  </header>
+  
+     
+  <div class="entry-content">
+    <p>When I first started programming some 20 years ago, testing was never a thing I had heard of. I'm not certain it even existed as a concept back then. In fact a recent talk from <a href="http://blog.felipe.rs/2017/02/25/id-software-programming-principles/">John Romero</a> of <a href="https://en.wikipedia.org/wiki/Id_Software">DOOM and Quake fame</a> clearly demonstrated that testing essentially boiled down to constantly building/compiling and running your software, over and over. I doubt TDD and BDD were a thing.</p>
+<p>Now we're at the point in our industry when testing is a big deal, and rightly so. I believe TDD, when <a href="http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html">considered carefully</a>, or something of its ilk, is an important means of testing whether or not your future changes are safe; whether or not business requirements are still being met; and whether or not a new feature or bug patch introduces regression.</p>
+<p>I've wanted TDD/BDD for infrastructure and configuration management for some time now, for the same reasons as above, and these days we have a great set of tools for introducing tests to our Ansible Roles. Let's take a look at these tools, delve into them a bit, and see what they can do.</p>
+<h2>Giving a bit back</h2>
+<p>Giving back to the OSS community is an important part of our industry (and something I'm guilty of not doing enough), so by the end of this article we will have introduced Molecule and Testinfra tests to an open-source Ansible Role and submitted a PR.</p>
+<h2>Some caveats</h2>
+<p>There are some issues with these tools. For example, you have to use a systemd "enabled" Docker image otherwise it becomes next to impossible to test if a service can be started or not. Such a test is very important, of course, but for those not willing to put in the effort, just testing files, packages, users, and so on, are in place could be sufficient.</p>
+<p>Here is a list of known issues at the time of writing:</p>
+<ul>
+<li>A systemd enabled Docker image must be used for Ubuntu and CentOS</li>
+<li>You might have to write a systemd service file for the package you want to install if the package maintainer doesn't provide one</li>
+<li>You have to be able/willing to trust unofficial images from Docker Hub</li>
+<li>You may be locked into the latest versions of CentOS and Ubuntu - I haven't tested earlier versions whilst researching for this article</li>
+</ul>
+<p>I've been informed that Molecule 2.0 makes a lot of tasks and things easier and better, so I'm certainly looking forward to that release.</p>
+<h2>The tools themselves</h2>
+<p>So, what tools are we devling into, exactly? Let's list them out:</p>
+<ul>
+<li>Molecule</li>
+<li>Testinfra</li>
+<li>Docker</li>
+<li>ansible-lint</li>
+<li>flake8</li>
+</ul>
+<p>Although the list looks somewhat intimidating, we will actually touch on Molecule for 40% of the work, and Testinfra for the other 60%. Molecule requires little in the way of setup provided your needs are simple, but Testinfra requires writing some basic Python functions to get the tests in place.</p>
+<p>The other tools are used and introduced transparently by Molecule.</p>
+<h3>Prerequisites</h3>
+<p>If you want to work through this article, you'll need the following peices of software:</p>
+<ul>
+<li>Ansible 2.2.1</li>
+<li>Molecule</li>
+<li>Testinfra</li>
+<li>Docker (I'm using Docker on OS X)</li>
+</ul>
+<p>Ansible, Molecule, and Testinfra are all installable via <code>pip</code>. Docker has an installer for OS X and I presume, Linux and Windows also.</p>
+<h2>Our task for today</h2>
+<p>So how are we going to delve into the tools here, and what problem are we going to solve? I've selected a random Role off of Ansible Galaxy and decided we will focus on adding in Molecule and Testinfra based tests (and removing any other tests that currently exist.) The Role installs and manages an NginX installation, so it's pretty useful to begin with. It's relatively complete and ripe for testing.</p>
+<p>The repository in question <a href="https://github.com/nickjj/ansible-nginx">ansible-nginx</a> by <a href="https://nickjanetakis.com">nickjj</a>. I've never met the guy, but I'm sure he's a gentlemen and a scholar. His Role is decent enough for our focus today.</p>
+<p>Because the Role only supports Ubuntu Server, we will be focusing on a single Docker image based on Ubuntu 16 which supports systemd. Getting systemd support in CentOS is something I will cover in another article, although the <a href="https://hub.docker.com/_/centos/">CentOS Docker Hub page explains how</a>.</p>
+<h2>To the point</h2>
+<p>Let's crack on with the task at hand and start being somewhat useful.</p>
+<ul>
+<li>Fork the repository above and clone your fork</li>
+<li><code>molecule init --provider docker</code></li>
+</ul>
+<p>You'll have a a new file in the repository's root called <code>molecule.yml</code>, let's edit it and dump in some conent:</p>
+<div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">driver</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">docker</span>
+<span class="l l-Scalar l-Scalar-Plain">docker</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">containers</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ansible-nginx</span>
+      <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">solita/ubuntu-systemd</span>
+      <span class="l l-Scalar l-Scalar-Plain">image_version</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">latest</span>
+      <span class="l l-Scalar l-Scalar-Plain">privileged</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="l l-Scalar l-Scalar-Plain">verifier</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">testinfra</span>
+</pre></div>
+
+
+<p>What we're doing here is simple:</p>
+<ul>
+<li>Docker is our driver (what will give us our virtualised environment)</li>
+<li>We're starting up a single container based on the <code>solita/ubuntu-systemd</code> image<ul>
+<li>It's important to note that's run in privileged mode: this is required</li>
+</ul>
+</li>
+<li>We're setting the default (and preferred) verifier to Testinfra</li>
+</ul>
+<p>Next we put in place some Testinfra tests. Edit the <code>tests/test_default.py</code> file and dump the following into it:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">testinfra.utils.ansible_runner</span>
+
+<span class="n">testinfra_hosts</span> <span class="o">=</span> <span class="n">testinfra</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">ansible_runner</span><span class="o">.</span><span class="n">AnsibleRunner</span><span class="p">(</span>
+    <span class="s1">&#39;.molecule/ansible_inventory&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_hosts</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_service</span><span class="p">(</span><span class="n">Service</span><span class="p">):</span>
+    <span class="n">present</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;nginx&quot;</span>
+    <span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">present</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">service</span> <span class="ow">in</span> <span class="n">present</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">Service</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="n">s</span><span class="o">.</span><span class="n">is_running</span>
+            <span class="k">assert</span> <span class="n">s</span><span class="o">.</span><span class="n">is_enabled</span>
+
+
+<span class="k">def</span> <span class="nf">test_files</span><span class="p">(</span><span class="n">File</span><span class="p">):</span>
+    <span class="n">present</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;/etc/nginx/nginx.conf&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">present</span><span class="p">:</span>
+        <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">present</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="n">f</span><span class="o">.</span><span class="n">exists</span>
+            <span class="k">assert</span> <span class="n">f</span><span class="o">.</span><span class="n">is_file</span>
+
+
+<span class="k">def</span> <span class="nf">test_packages</span><span class="p">(</span><span class="n">Package</span><span class="p">):</span>
+    <span class="n">present</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;nginx&quot;</span>
+    <span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">present</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">present</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">Package</span><span class="p">(</span><span class="n">package</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="n">p</span><span class="o">.</span><span class="n">is_installed</span>
+
+
+<span class="k">def</span> <span class="nf">test_directories</span><span class="p">(</span><span class="n">File</span><span class="p">):</span>
+    <span class="n">present</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;/etc/nginx&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;/etc/nginx/ssl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;/etc/nginx/conf.d&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;/etc/nginx/sites-enabled&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;/etc/nginx/sites-available&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;/usr/share/nginx/html&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="n">absent</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;/var/www/html&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;/etc/nginx/sites-enabled/default&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;/etc/nginx/sites-available/default&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">present</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">directory</span> <span class="ow">in</span> <span class="n">present</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="n">d</span><span class="o">.</span><span class="n">is_directory</span>
+            <span class="k">assert</span> <span class="n">d</span><span class="o">.</span><span class="n">exists</span>
+
+    <span class="k">if</span> <span class="n">absent</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">directory</span> <span class="ow">in</span> <span class="n">absent</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="ow">not</span> <span class="n">d</span><span class="o">.</span><span class="n">exists</span>
+</pre></div>
+
+
+<p>Those of you who are used to working with <a href="http://flake8.pycqa.org/en/latest/">flake8</a> linted Python scripts (it's pretty new to me, if I'm being honest) will notice the formatting of the above Python script is indeed flake8 compliant.</p>
+<p>Now we can actually run out tests. It's true. Here is some example output based on the above <code>molecule.yml</code> and <code>test_default.py</code> files:</p>
+<div class="highlight"><pre><span></span>$ molecule <span class="nb">test</span>
+--&gt; Destroying instances...
+Stopping container ansible-nginx...
+Removed container ansible-nginx.
+--&gt; Checking playbook<span class="err">&#39;</span>s syntax...
+
+playbook: playbook.yml
+--&gt; Creating instances...
+Creating container ansible-nginx with base image solita/ubuntu-systemd:latest...
+Container created.
+--&gt; Starting Ansible Run...
+
+PLAY <span class="o">[</span>all<span class="o">]</span> *********************************************************************
+
+TASK <span class="o">[</span>setup<span class="o">]</span> *******************************************************************
+ok: <span class="o">[</span>ansible-nginx<span class="o">]</span>
+
+...
+
+PLAY RECAP *********************************************************************
+ansible-nginx              : <span class="nv">ok</span><span class="o">=</span><span class="m">11</span>   <span class="nv">changed</span><span class="o">=</span><span class="m">10</span>   <span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span>    <span class="nv">failed</span><span class="o">=</span><span class="m">0</span>
+
+--&gt; Idempotence <span class="nb">test</span> in progress <span class="o">(</span>can take a few minutes<span class="o">)</span>...
+--&gt; Starting Ansible Run...
+Idempotence <span class="nb">test</span> passed.
+--&gt; Executing ansible-lint...
+--&gt; Executing flake8 on *.py files found in tests/...
+--&gt; Executing testinfra tests found in tests/...
+<span class="o">=============================</span> <span class="nb">test</span> session <span class="nv">starts</span> <span class="o">==============================</span>
+platform darwin -- Python <span class="m">2</span>.7.12, pytest-3.0.6, py-1.4.32, pluggy-0.4.0
+rootdir: /Users/michaelc/Documents/git/ansible-roles/ansible-nginx, inifile:
+plugins: testinfra-1.4.5
+collected <span class="m">4</span> itemss
+
+tests/test_default.py ....
+
+<span class="o">============================</span> pytest-warning <span class="nv">summary</span> <span class="o">============================</span>
+WP1 None Module already imported so can not be re-written: <span class="nv">testinfra</span>
+<span class="o">=================</span> <span class="m">4</span> passed, <span class="m">1</span> pytest-warnings in <span class="m">1</span>.62 <span class="nv">seconds</span> <span class="o">==================</span>
+--&gt; Destroying instances...
+Stopping container ansible-nginx...
+Removed container ansible-nginx.
+</pre></div>
+
+
+<p>What a lovely sight. For some, this may have taken several minutes (it did for me on my connection), but for those on fibre or fast connections, it would have been much quicker. When plugged into TravisCI or another managed service, you'll probably get very good speeds when it comes to packages installations.</p>
+  </div><!-- /.entry-content -->
+   <footer class="post-info text-muted">
+    Posted on <abbr class="published" title="2017-02-26T00:00:00+10:00">
+      Sun 26 February 2017
+    </abbr>
+    <address class="vcard author">
+      by <a class="url fn" href="http://opsfactory.com.au/author/michael-crilly.html">Michael Crilly</a>
+    </address> in <a href="http://opsfactory.com.au/category/automation.html">Automation</a> Tagged <a href="http://opsfactory.com.au/tag/ansible.html">ansible </a><a href="http://opsfactory.com.au/tag/confmg.html">confmg </a><a href="http://opsfactory.com.au/tag/molecule.html">molecule </a><a href="http://opsfactory.com.au/tag/docker.html">docker </a><a href="http://opsfactory.com.au/tag/testinfra.html">testinfra </a>  </footer><!-- /.post-info -->
+</section>
+            <footer id="contentinfo" class="footer">
+                    <nav class="pull-right bottom-nav">
+                        <a href="http://opsfactory.com.au/None">RSS</a>
+                    </nav>
+                    <address id="about" class="vcard body">
+                    &copy; <a href="http://opsfactory.com.au">Ops Factory</a> Proudly powered by <a href="http://getpelican.com/">Pelican</a>
+                    </address><!-- /#about -->
+            </footer><!-- /#contentinfo -->
+        </div><!-- container -->
+    </body>
+</html>
