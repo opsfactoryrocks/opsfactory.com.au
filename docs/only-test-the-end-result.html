@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Only test the end result - Ops Factory</title>
+        <meta charset="utf-8" />
+        <link href="http://opsfactory.com.au/theme/css/cosmo.bootstrap.min.css" rel="stylesheet" />
+        <link href="http://opsfactory.com.au/theme/css/style.css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    </head>
+
+    <body id="index" class="archive">
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class=""><a href="http://opsfactory.com.au">Home</a></li>
+                    <li><a href="http://opsfactory.com.au/archives.html">Archives</a></li>
+                </ul>
+                <h3 class="text-muted"><a href="http://opsfactory.com.au">Ops Factory</a></h3>
+				<h2 class="text-muted"></h2>
+             </div>
+<section id="content" class="article content">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://opsfactory.com.au/only-test-the-end-result.html" rel="bookmark"
+         title="Permalink to Only test the end result">Only test the end result</a></h2>
+ 
+  </header>
+  
+     
+  <div class="entry-content">
+    <p>It was only yesterday that I wrote about <a href="http://opsfactory.com.au/ansible-role-testing-with-molecule.html">Testing Ansible Roles with Molecule</a>, and today I wanted to write a short explanation of what I believe is the correctv use case for testing Ansible Roles.</p>
+<p>Testing is an important part of software engineering and development. It provides several advantages and has been widely accepted as a successful paradigm. Some pretty <a href="http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html">key</a> <a href="http://rbcs-us.com/documents/Why-Most-Unit-Testing-is-Waste.pdf">players</a> in the industry, however, have pointed out the importance of balance and ensuring that a suite of tests is carefully implemented and curated throughout their life (which is finite.) I agree.</p>
+<p>With Ansible Roles, I believe the same is true: think abount what actually needs to be tested and test it, but make sure the tests you've written are still relevant when you revisit them further down the line.</p>
+<h2>Linting</h2>
+<p>The fantastic <code>ansible-lint</code> by <a href="http://willthames.github.io">Will Thames</a> (who I've had the pleasure of working with) is a great start to ensuring your YAML/Ansible falls in line with common best practices. </p>
+<p>This is a no brainer, really. By following best development practices, like making sure you name tasks; and having service restart tasks moved into handlers, are all perfectly valid and correct things to be checking for.</p>
+<h2>Flake8</h2>
+<p>If you're writing custom Python modules, or have any Python littered throughout your repository at all, then <a href="http://flake8.pycqa.org/en/latest/">flake8</a>, like <code>ansible-lint</code>, ensures best practices are being adhered to. </p>
+<p>I don't believe there's possibly a counter argument here.</p>
+<h2>Testinfra</h2>
+<p>So here's where it gets interesting. A good friend of mine, <a href="http://james.belchamber.com">James Belchamber</a>, commented on that article explaining how he feels it's not constructive to test every unit, which in the case of an Ansible Playbook or Role, is probably the result of every module call (<code>user</code>, <code>file</code>, <code>template</code>, <code>ec2_instance</code>, etc.) I agree with this view of testing Roles and Playbooks, and so I wanted to clarify what I would want to see tested in a well maintained, tested Role: <strong>the final result</strong></p>
+<p>The final result is the intended outcome of the Role or Playbook, which could be, but certaintly isn't limited to:</p>
+<ul>
+<li>The service or software being managed</li>
+<li>A particular file or set of that should have been created</li>
+<li>A set of users that should now exist</li>
+<li>The correct SSL certificates were put in place</li>
+<li>That NFS mount that's needed by another process (managed by another Role)</li>
+</ul>
+<p>And so on.</p>
+<p>If your Role introduces a new service to the network, test that it came up, but don't test Ansible correctly uploaded every file involved, created the service's user, or correctly set the hostname. If the services doesn't come up, <strong>use the Ansible output as a log to determine why.</strong> Once you've fixed the issue, the service comes up and your Testinfra tests pass.</p>
+<p>Use Ansible's output log as an audit trail for when things fail, but until that happens, just test the final results are what you expected and move on.</p>
+  </div><!-- /.entry-content -->
+   <footer class="post-info text-muted">
+    Posted on <abbr class="published" title="2017-02-27T00:00:00+10:00">
+      Mon 27 February 2017
+    </abbr>
+    <address class="vcard author">
+      by <a class="url fn" href="http://opsfactory.com.au/author/michael-crilly.html">Michael Crilly</a>
+    </address> in <a href="http://opsfactory.com.au/category/testing.html">Testing</a> Tagged <a href="http://opsfactory.com.au/tag/molecule.html">molecule </a><a href="http://opsfactory.com.au/tag/testing.html">testing </a>  </footer><!-- /.post-info -->
+</section>
+            <footer id="contentinfo" class="footer">
+                    <nav class="pull-right bottom-nav">
+                        <a href="http://opsfactory.com.au/None">RSS</a>
+                    </nav>
+                    <address id="about" class="vcard body">
+                    &copy; <a href="http://opsfactory.com.au">Ops Factory</a> Proudly powered by <a href="http://getpelican.com/">Pelican</a>
+                    </address><!-- /#about -->
+            </footer><!-- /#contentinfo -->
+        </div><!-- container -->
+    </body>
+</html>
