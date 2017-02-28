@@ -11,6 +11,11 @@ TIMEZONE = 'Australia/Brisbane'
 DEFAULT_LANG = u'en'
 THEME = 'themes/simple-bootstrap'
 OUTPUT = 'docs'
+
+# Social and Analytics
+DISQUS_SITENAME = "opsfactoryau"
+GOOGLE_ANALYTICS = "UA-92774518-1"
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
