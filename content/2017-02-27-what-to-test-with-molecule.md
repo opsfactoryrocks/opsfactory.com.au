@@ -6,7 +6,7 @@ Slug: only-test-the-end-result
 Authors: Michael Crilly
 Summary: Don't test every unit or funtion, just test the end the result.
 
-It was only yesterday that I wrote about [Testing Ansible Roles with Molecule]({filename}2017-02-25-testing-ansible-roles-with-molecule.md), and today I wanted to write a short explanation of what I believe is the correctv use case for testing Ansible Roles.
+It was only yesterday that I wrote about [Testing Ansible Roles with Molecule]({filename}2017-02-25-testing-ansible-roles-with-molecule.md), and today I wanted to write a short explanation of what I believe is the correct use case for testing Ansible Roles.
 
 Testing is an important part of software engineering and development. It provides several advantages and has been widely accepted as a successful paradigm. Some pretty [key](http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html) [players](http://rbcs-us.com/documents/Why-Most-Unit-Testing-is-Waste.pdf) in the industry, however, have pointed out the importance of balance and ensuring that a suite of tests is carefully implemented and curated throughout their life (which is finite.) I agree.
 
