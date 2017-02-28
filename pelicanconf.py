@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Michael C.'
 SITENAME = u'Ops Factory'
+SITESUBTITLE = u'Automation Made Simple'
 SITEURL = 'http://opsfactory.com.au'
 PATH = 'content'
 TIMEZONE = 'Australia/Brisbane'
