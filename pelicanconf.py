@@ -5,7 +5,8 @@ from __future__ import unicode_literals
 AUTHOR = u'Michael C.'
 SITENAME = u'Ops Factory'
 SITESUBTITLE = u'Automation Made Simple'
-SITEURL = 'http://opsfactory.com.au'
+# SITEURL = 'http://opsfactory.com.au'
+SITEURL = "http://10.1.1.218:8000"
 PATH = 'content'
 TIMEZONE = 'Australia/Brisbane'
 DEFAULT_LANG = u'en'
@@ -28,7 +29,7 @@ AUTHOR_FEED_RSS = None
 # SOCIAL = (('You can add links in your config file', '#'),
 #           ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 10
+# DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
