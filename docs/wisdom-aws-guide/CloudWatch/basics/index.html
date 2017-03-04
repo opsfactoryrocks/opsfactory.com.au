@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Basics - Wisdom: AWS Guides</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Basics";
+    var mkdocs_page_input_path = "CloudWatch/basics.md";
+    var mkdocs_page_url = "/CloudWatch/basics/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Wisdom: AWS Guides</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>AMIs</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../AMIs/introduction/">Introduction</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../AMIs/tips/">Tips</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../AMIs/traps/">Traps</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>API Gateway</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../API Gateway/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../API Gateway/development/">Development</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../API Gateway/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../API Gateway/introduction/">Introduction</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Application Load Balancer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Application Load Balancer/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Application Load Balancer/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Application Load Balancer/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Aurora</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Aurora/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Aurora/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Aurora/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Auto Scaling</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Auto Scaling/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Auto Scaling/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Auto Scaling/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Billing</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Billing/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Billing/data-transfer-costs/">Data transfer costs</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Billing/ec2-cost-management/">Ec2 cost management</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Certificate Manager</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Certificate Manager/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Certificate Manager/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Certificate Manager/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Certificate Manager/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>CloudFormation</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../CloudFormation/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../CloudFormation/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../CloudFormation/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../CloudFormation/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>CloudFront</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../CloudFront/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../CloudFront/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../CloudFront/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../CloudFront/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>CloudWatch</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Basics</a>
+        
+            <ul>
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Device Farm</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Device Farm/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Device Farm/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Device Farm/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>DirectConnect</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../DirectConnect/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../DirectConnect/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>DynamoDB</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../DynamoDB/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../DynamoDB/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../DynamoDB/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../DynamoDB/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>EBS</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EBS/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EBS/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EBS/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>EC2</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EC2/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EC2/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EC2/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EC2/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>ECS</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../ECS/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../ECS/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../ECS/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>EFS</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EFS/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EFS/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EFS/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>EMR</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EMR/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EMR/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EMR/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../EMR/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Elastic IPs</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Elastic IPs/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Elastic IPs/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Elastic IPs/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Elastic Load Balancer</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Elastic Load Balancer/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Elastic Load Balancer/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Elastic Load Balancer/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Further Reading</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Further Reading/basics/">Basics</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>General Information</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../General Information/aws-product-maturity-and-releases/">Aws product maturity and releases</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../General Information/common-concepts/">Common concepts</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../General Information/compliance/">Compliance</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../General Information/getting-help-and-support/">Getting help and support</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../General Information/restrictions-and-other-notes/">Restrictions and other notes</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../General Information/service-matrix/">Service matrix</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../General Information/tools-and-services-market-landscape/">Tools and services market landscape</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../General Information/when-to-use-aws/">When to use aws</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../General Information/which-services-to-use/">Which services to use</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Glacier</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Glacier/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Glacier/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Glacier/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>High Availability</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../High Availability/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../High Availability/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>IOT</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../IOT/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../IOT/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../IOT/code-samples/">Code samples</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../IOT/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../IOT/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>KMS</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../KMS/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../KMS/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../KMS/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Kinesis Streams</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Kinesis Streams/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Kinesis Streams/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Kinesis Streams/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Kinesis Streams/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Lambda</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Lambda/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Lambda/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Lambda/code-samples/">Code samples</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Lambda/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Lambda/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Learning And Career Development</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Learning And Career Development/certifications/">Certifications</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Load Balancers</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Load Balancers/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Load Balancers/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Load Balancers/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Managing AWS</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing AWS/apis-and-sdks/">Apis and sdks</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing AWS/aws-configuration-management/">Aws configuration management</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing AWS/aws-console/">Aws console</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing AWS/boto/">Boto</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing AWS/command-line-tools/">Command line tools</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing AWS/general-visibility/">General visibility</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing AWS/managing-infrastructure-state-and-change/">Managing infrastructure state and change</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Managing Servers And Applications</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing Servers And Applications/aws-vs-server-configuration/">Aws vs server configuration</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing Servers And Applications/containers-and-aws/">Containers and aws</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing Servers And Applications/philosophy/">Philosophy</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing Servers And Applications/server-configuration-management/">Server configuration management</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing Servers And Applications/tips-for-managing-servers/">Tips for managing servers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Managing Servers And Applications/visibility/">Visibility</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>RDS</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RDS/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RDS/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RDS/mysql-and-mariadb-basics/">Mysql and mariadb basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RDS/mysql-and-mariadb-gotchas-and-limitations/">Mysql and mariadb gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RDS/mysql-and-mariadb-tips/">Mysql and mariadb tips</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RDS/sql-server-basics/">Sql server basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RDS/sql-server-gotchas-and-limitations/">Sql server gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RDS/sql-server-tips/">Sql server tips</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../RDS/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Redshift</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Redshift/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Redshift/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Redshift/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Redshift/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Route53</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Route53/alternatives-and-lock-in/">Alternatives and lock in</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Route53/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Route53/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>S3</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../S3/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../S3/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../S3/storage-durability-availability-and-price/">Storage durability availability and price</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../S3/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>SES</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../SES/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../SES/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../SES/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Security And IAM</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Security And IAM/security-and-iam-basics/">Security and iam basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Security And IAM/security-and-iam-gotchas-and-limitations/">Security and iam gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../Security And IAM/security-and-iam-tips/">Security and iam tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>VPC Network Security</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../VPC Network Security/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../VPC Network Security/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../VPC Network Security/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>WAF</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../WAF/basics/">Basics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../WAF/gotchas-and-limitations/">Gotchas and limitations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../WAF/tips/">Tips</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Wisdom: AWS Guides</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>CloudWatch &raquo;</li>
+        
+      
+    
+    <li>Basics</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <ul>
+<li><a href="https://aws.amazon.com/cloudwatch/">Homepage</a>  <a href="https://aws.amazon.com/documentation/cloudwatch/">Documentation</a>  <a href="https://aws.amazon.com/cloudwatch/faqs/">FAQ</a>  <a href="https://aws.amazon.com/cloudwatch/pricing/">Pricing</a></li>
+<li><strong>CloudWatch</strong> monitors resources and applications, captures logs, and sends events.</li>
+<li>CloudWatch monitoring is the standard mechanism for keeping tabs on AWS resources. A wide range of  <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html"><strong>metrics and dimensions</strong></a> are available via CloudWatch, allowing you to create time based graphs, <strong><a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html">alarms</a></strong>, and <strong><a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Dashboards.html">dashboards</a></strong>.<ul>
+<li>Alarms are the most practical use of CloudWatch, allowing you to trigger notifications from any given metric.</li>
+<li>Alarms can trigger <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ConsoleAlarms.html">SNS notifications</a>, <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/policy_creating.html">Auto Scaling actions</a>, or <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingAlarmActions.html">EC2 actions</a>.</li>
+<li>Publish and share graphs of metrics by creating <a href="https://aws.amazon.com/blogs/aws/cloudwatch-dashboards-create-use-customized-metrics-views/">customizable dashboard views</a>.<ul>
+<li>Monitor and report on EC2 <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#creating_status_check_alarms">instance system check failure alarms</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Using CloudWatch Events:</strong><ul>
+<li>Events create a mechanism to automate actions in various services on AWS. You can create <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/EventTypes.html">event rules</a> from instance states, AWS APIs, Auto Scaling, Run commands, deployments or time-based schedules (think Cron).</li>
+<li><a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CWE_GettingStarted.html">Triggered events</a> can can invoke Lambda functions, send SNS/SQS/Kinesis messages, or perform instance actions (terminate, restart, stop, or snapshot volumes).</li>
+<li>Custom payloads can be sent to targets in JSON format, this is especially useful when triggering Lambdas.</li>
+</ul>
+</li>
+<li><strong>Using CloudWatch Logs:</strong><ul>
+<li><a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html">CloudWatch Logs</a> is a streaming log storage system. By storing logs within AWS you have access to unlimited paid storage, but you also have the option of streaming logs directly to ElasticSearch or custom Lambdas.</li>
+<li>A <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_GettingStarted.html">log agent installed</a> on your servers will process logs over time and send them to CloudWatch Logs.</li>
+<li>You can <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/S3Export.html">export logged data to S3</a> or stream results to other AWS services.</li>
+</ul>
+</li>
+<li><strong>Detailed monitoring:</strong> <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.html">Detailed monitoring</a> for EC2 instances must be enabled to get granular metrics, and is <a href="https://aws.amazon.com/cloudwatch/pricing/">billed under CloudWatch</a>.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../gotchas-and-limitations/" class="btn btn-neutral float-right" title="Gotchas and limitations">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../alternatives-and-lock-in/" class="btn btn-neutral" title="Alternatives and lock in"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../alternatives-and-lock-in/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../gotchas-and-limitations/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
+</html>
