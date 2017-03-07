@@ -5,16 +5,17 @@ Tags: ansible, confmg, terraform, infrastructure
 Slug: terraform-and-ansible-pull
 Authors: Michael Crilly
 Summary: Pulling instead of pushing for self-provisioning systems is very powerful, especially without a centralised authority to maintain.
-Status: draft
 
-I was first introduced to Configuration Management via [Puppet](). I used it extensively at several engagements and it did the job rather well. The DSL was workable, writing modules was simple enough, and Puppet its self, as well as the projects around it ([Foreman]() and [Hiera]()) did a great job of making the whole state management process easier.
+I was first introduced to Configuration Management via [Puppet](https://puppet.com/product). I used it extensively at several engagements and it did the job rather well. The DSL was workable, writing modules was simple enough, and Puppet its self, as well as the projects around it ([Foreman](https://www.theforeman.org) and [Hiera](https://docs.puppet.com/hiera/)) did a great job of making the whole state management process easier.
 
 During that time I had also discovered and grew very fond of Ansible. It was quickly becoming the superior product from my perspective, primarily due to the simple integration and push (by default) based model. **I haven't touched Puppet for nearly four years.**
 
 Although Ansible won out with its push model, time and time again I found managing inventories and executing tasks locally tedious. I often caught my self wishing I could actually just implement some centralised system that Ansible pulled from. I obviously knew of `ansible-pull`, but what would the architecture look like? How could I still get Ansible's frictionless push model integration into a network and still remove the need for dealing with inventories?
 
+I essentially wanted to update the state, push it, and then have the network apply the new state.
+
 ## A shell script
-I eventually settled on a very simple but effective solution: a shell script executed on a new instance via the user data/[cloud-init](https://cloudinit.readthedocs.io/en/latest/) feature to install Ansible and run `ansible-pull`.
+After thinking about various solutions, which obviously involved a lot of overthinking, I eventually settled on an extremely obvious, very simple but effective solution: a shell script executed on a new instance via the user data/[cloud-init](https://cloudinit.readthedocs.io/en/latest/) feature to install Ansible and run `ansible-pull`.
 
 It's a five line shell script:
 
@@ -56,21 +57,31 @@ resource "aws_instance" "bounce" {
 }
 ```
 
-The sample here demonstrates a static instance being setup, but the process is exactly same for AWS Launch Configurations (to back an Auto Scaling Group) for dynamically scaling, volatile instances.
+The sample here demonstrates a static instance being setup, but the process is exactly the same for AWS Launch Configurations (to back an Auto Scaling Group) for dynamically scaling, volatile instances.
 
 Once a system is starting up and this whole process is put into action, two Playbooks then control the present and future state of the new system: `provision.yaml` and `update.yaml`.
 
-## Push, pull, pull later (PPPL)
-The provisioning process, the first use of Ansible on the system, is about getting the new system setup and configured to fulfill its role within the network. This is done by executing the correct Ansible Roles against the system and getting the correct state in place. Once complete, there may be a need to quickly and easily update the system later on.
+### Provisioning
+The process of provisioning the system is the first stage to the management of the OS and above. This stage gets the system ready to perform its role and in a stable condition.
 
-This is why we need a second Playbook - I want to be able to update certain Roles and Playbooks and have them executed across the network, on the right systems, a few minutes later. Or put another way: it's OK to update (static) systems in place.
+### Updating
+The process of updating the system in place is somewhat optional in this architecture. Some people don't like the idea of updating infrastructure in place, especially now with the ease of implementing CI/CD processes; automation tools; testing; and so on. Feel free to omit this option.
 
-### The PL in PPPL
-The pull later (PL) aspect of this solution can be seen as somewhat of a fail safe, a back door, or simply me covering my arse. Or perhaps the process of building and configuring, only to rebuild and reconfigure again very soon after gets tiresome quickly, especially when the new state is a simple change. But in all honesty, I implemented this part of the solution as a way of controlling access to the system via user accounts and SSH keys. **It's a completely optional part and boisl down to personal preference.**
+## Push, pull, and perhaps pull later
+The first stage of the provisioning process is about getting the new system setup and configured to fulfill its role within the network. This is done by executing the correct Ansible Roles against the system and getting the correct state in place. Once complete, the system should be serving traffic or grabbing and dealing with work from a queue (for example.)
 
-The second Playbook can be used for a very simple changes which are not only propagated to new systems when they're built in the future, but also to existing systems in the here and now.
+Once complete, there may be a need to quickly and easily update the system later on. This is why we need a second Playbook - I want to be able to update certain Roles and Playbooks and have them executed across the network, on the right systems, a few minutes later.
 
-## Immutability
-I'm a big fan of the immutable (read-only file system) design philosophy when it comes to system engineering and continuous delivery, but it's not realistic for all situations or architectures. That means we still need a solution for updating static infrastructure and a second `ansible-pull` operation is ideal for this.
+Despite what some people may tell you, **it's OK to update state in place.**
 
-With a "Push, pull, pull later" (PPPL) model, a simple cronjob and a second Playbook introduces a way of executing one off changes to state across a wide range of systems and frankly, sometimes you just have to get things done in here and now.
+### About that "pull later" bit
+The pull later aspect of this solution can be seen as somewhat of a fail safe, a back door, or simply me covering my arse. Or perhaps the process of building and configuring, only to rebuild and reconfigure again very soon after gets tiresome quickly, especially when the new state is a simple change.
+
+The second Playbook can be used for a very simple changes which are not only propagated to new systems when they're built in the future, but also to existing systems in the here and now. I believe this is an important option to have and it is just that: **optional.**
+
+My primary goal when implementing this part of the solution was as a way of controlling access to the system through user management. It's a completely optional part and boils down to personal preference.
+
+## That's the basics
+With the right amount of consideration, the `ansible-pull` model of working is rather quite simple, easy to grasp and implement, and uses tools already present in the network (most likely, anyway.)
+
+Like all solutions, however, it can't be everything to everyone.
