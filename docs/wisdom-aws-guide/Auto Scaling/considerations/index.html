@@ -15,7 +15,7 @@
     
     
       
-        <title>Basics - Wisdom: AWS Guides</title>
+        <title>Considerations - Wisdom: AWS Guides</title>
       
     
     
@@ -59,7 +59,8 @@
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
         
-          <a href="../.." title="Wisdom: AWS Guides" class="md-icon md-icon--home md-header-nav__button">
+          <a href="../.." title="Wisdom: AWS Guides" class="md-logo md-header-nav__button">
+            <img src="../../of.png" width="24" height="24">
           </a>
         
       </div>
@@ -72,11 +73,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  Auto Scaling (DRAFT)
+                  Auto Scaling
                 </span>
               
             
-            Basics
+            Considerations
           
         </span>
       </div>
@@ -122,7 +123,9 @@
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
     
-      <i class="md-icon md-icon--home md-nav__button"></i>
+      <i class="md-logo md-nav__button">
+        <img src="../../of.png">
+      </i>
     
     Wisdom: AWS Guides
   </label>
@@ -343,11 +346,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
-      Aurora (DRAFT)
+      Aurora
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
-        Aurora (DRAFT)
+        Aurora
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -358,7 +361,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Aurora/basics/" title="Introduction" class="md-nav__link">
+    <a href="../../Aurora/introduction/" title="Introduction" class="md-nav__link">
       Introduction
     </a>
   </li>
@@ -372,18 +375,6 @@
   <li class="md-nav__item">
     <a href="../../Aurora/tips/" title="Tips" class="md-nav__link">
       Tips
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Aurora/traps/" title="Traps" class="md-nav__link">
-      Traps
     </a>
   </li>
 
@@ -405,11 +396,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
-      Auto Scaling (DRAFT)
+      Auto Scaling
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
-        Auto Scaling (DRAFT)
+        Auto Scaling
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -418,29 +409,10 @@
           
           
 
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="Basics" class="md-nav__link md-nav__link--active">
-      Basics
-    </a>
-    
-  </li>
-
-        
-          
-          
-          
-
 
   <li class="md-nav__item">
-    <a href="../gotchas-and-limitations/" title="Gotchas and limitations" class="md-nav__link">
-      Gotchas and limitations
+    <a href="../introduction/" title="Basics" class="md-nav__link">
+      Basics
     </a>
   </li>
 
@@ -454,6 +426,27 @@
     <a href="../tips/" title="Tips" class="md-nav__link">
       Tips
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+    <a href="./" title="Considerations" class="md-nav__link md-nav__link--active">
+      Considerations
+    </a>
+    
   </li>
 
         
@@ -2540,6 +2533,8 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
 </nav>
                   </div>
@@ -2552,15 +2547,8 @@
                
               
                 
-                  <h1>Basics</h1>
-                
-                <ul>
-<li><a href="https://aws.amazon.com/autoscaling/">Homepage</a>  <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/">User guide</a>  <a href="https://aws.amazon.com/ec2/faqs/#Auto_Scaling">FAQ</a>  <a href="https://aws.amazon.com/autoscaling/pricing/">Pricing</a> at no additional charge</li>
-<li><a href="https://aws.amazon.com/autoscaling/"><strong>Auto Scaling Groups (ASGs)</strong></a> are used to control the number of instances in a service, reducing manual effort to provision or deprovision EC2 instances.</li>
-<li>They can be configured through <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/policy_creating.html">Scaling Policies</a> to automatically increase or decrease instance counts based on metrics like CPU utilization, or based on a schedule.</li>
-<li>There are three common ways of using ASGs - dynamic (automatically adjust instance count based on metrics for things like CPU utilization), static (maintain a specific instance count at all times), scheduled (maintain different instance counts at different times of day or on days of the week).</li>
-<li>ASGs <a href="https://aws.amazon.com/autoscaling/pricing/">have no additional charge</a> themselves; you pay for underlying EC2 and CloudWatch services.</li>
-</ul>
+                <h1 id="replaceunhealthy-setting">ReplaceUnhealthy setting</h1>
+<p>By default, ASGs will kill instances that the EC2 instance manager considers to be unresponsive. It is possible for instances whose CPU is completely saturated for minutes at a time to appear to be unresponsive, causing an ASG with the default <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html#process-types">ReplaceUnhealthy setting</a> turned on to replace them. When instances that are managed by ASGs are expected to consistently run with very high CPU, consider deactivating this setting. <strong>If you do so, however, detecting and killing unhealthy nodes will become your responsibility.</strong></p>
               
               
             </article>
@@ -2574,7 +2562,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../Aurora/traps/" title="Traps" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../tips/" title="Tips" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2583,19 +2571,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Traps
+                Tips
               </span>
             </div>
           </a>
         
         
-          <a href="../gotchas-and-limitations/" title="Gotchas and limitations" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../Billing/basics/" title="Basics" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Gotchas and limitations
+                Basics
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

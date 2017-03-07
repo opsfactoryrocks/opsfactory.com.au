@@ -59,7 +59,8 @@
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
         
-          <a href="../.." title="Wisdom: AWS Guides" class="md-icon md-icon--home md-header-nav__button">
+          <a href="../.." title="Wisdom: AWS Guides" class="md-logo md-header-nav__button">
+            <img src="../../of.png" width="24" height="24">
           </a>
         
       </div>
@@ -72,7 +73,7 @@
             
               
                 <span class="md-header-nav__parent">
-                  Auto Scaling (DRAFT)
+                  Auto Scaling
                 </span>
               
             
@@ -122,7 +123,9 @@
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
     
-      <i class="md-icon md-icon--home md-nav__button"></i>
+      <i class="md-logo md-nav__button">
+        <img src="../../of.png">
+      </i>
     
     Wisdom: AWS Guides
   </label>
@@ -343,11 +346,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
-      Aurora (DRAFT)
+      Aurora
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
-        Aurora (DRAFT)
+        Aurora
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -358,7 +361,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Aurora/basics/" title="Introduction" class="md-nav__link">
+    <a href="../../Aurora/introduction/" title="Introduction" class="md-nav__link">
       Introduction
     </a>
   </li>
@@ -372,18 +375,6 @@
   <li class="md-nav__item">
     <a href="../../Aurora/tips/" title="Tips" class="md-nav__link">
       Tips
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Aurora/traps/" title="Traps" class="md-nav__link">
-      Traps
     </a>
   </li>
 
@@ -405,11 +396,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
-      Auto Scaling (DRAFT)
+      Auto Scaling
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
-        Auto Scaling (DRAFT)
+        Auto Scaling
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -420,20 +411,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../basics/" title="Basics" class="md-nav__link">
+    <a href="../introduction/" title="Basics" class="md-nav__link">
       Basics
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../gotchas-and-limitations/" title="Gotchas and limitations" class="md-nav__link">
-      Gotchas and limitations
     </a>
   </li>
 
@@ -449,11 +428,25 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
+      
+    
     
     <a href="./" title="Tips" class="md-nav__link md-nav__link--active">
       Tips
     </a>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../considerations/" title="Considerations" class="md-nav__link">
+      Considerations
+    </a>
   </li>
 
         
@@ -2540,6 +2533,8 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
 </nav>
                   </div>
@@ -2552,15 +2547,17 @@
                
               
                 
-                  <h1>Tips</h1>
-                
-                <ul>
-<li>Better matching your cluster size to your current resource requirements through use of ASGs can result in significant cost savings for many types of workloads.</li>
-<li>Pairing ASGs with CLBs is a common pattern used to deal with changes in the amount of traffic a service receives.</li>
-<li>Dynamic Auto Scaling is easiest to use with stateless, horizontally scalable services.</li>
-<li>Even if you are not using ASGs to dynamically increase or decrease instance counts, you should seriously consider maintaining all instances inside of ASGs  given a target instance count, the ASG will work to ensure that number of instances running is equal to that target, replacing instances for you if they die or are marked as being unhealthy. This results in consistent capacity and better stability for your service.</li>
-<li>Autoscalers can be <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">configured to terminate</a> instances that a CLB or ALB has marked as being unhealthy.</li>
-</ul>
+                <h1 id="right-size-your-asgs">Right size your ASGs</h1>
+<p>If you match your ASGs to your current highest possible load, then use scaling policies and schedules to match busy times of the day/week, then you can drastically reduce your operating costs.</p>
+<h1 id="asgs-clbs">ASGs &amp; CLBs</h1>
+<p>Pairing ASGs with Classic Load Balancers (CLBs) is a common pattern used to deal with changes in the amount of traffic a service receives.</p>
+<h1 id="stateless-auto-scaling">Stateless Auto Scaling</h1>
+<p>Dynamic Auto Scaling is easiest to use with stateless, horizontally scalable services.</p>
+<h1 id="maintain-a-certain-head-count">Maintain a certain head count</h1>
+<p>Even if you are not using ASGs to dynamically increase or decrease instance counts, you should seriously consider maintaining all instances inside of ASGs  given a target instance count, the ASG will work to ensure that number of instances running is equal to that target, replacing instances for you if they die or are marked as being unhealthy. This results in consistent capacity and better stability for your service.</p>
+<p>Another benefit is Availability Zone outages: an ASG will bring up a new instance if one goes down in another AZ (provided your ASG is across at least two AZs.)</p>
+<h1 id="auto-termination">Auto termination</h1>
+<p>Autoscalers can be <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html">configured to terminate</a> instances that a CLB or ALB has marked as being unhealthy.</p>
               
               
             </article>
@@ -2574,7 +2571,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../gotchas-and-limitations/" title="Gotchas and limitations" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../introduction/" title="Basics" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2583,19 +2580,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Gotchas and limitations
+                Basics
               </span>
             </div>
           </a>
         
         
-          <a href="../../Billing/basics/" title="Basics" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../considerations/" title="Considerations" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Basics
+                Considerations
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

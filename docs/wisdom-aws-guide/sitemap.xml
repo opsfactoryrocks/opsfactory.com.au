@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,19 +13,19 @@
         
     <url>
      <loc>/AMIs/introduction/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/AMIs/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/AMIs/considerations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -35,25 +35,25 @@
         
     <url>
      <loc>/API Gateway/introduction/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/API Gateway/alternatives/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/API Gateway/development/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/API Gateway/considerations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -63,19 +63,19 @@
         
     <url>
      <loc>/Application Load Balancer/introduction/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Application Load Balancer/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Application Load Balancer/considerations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -84,20 +84,14 @@
     
         
     <url>
-     <loc>/Aurora/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <loc>/Aurora/introduction/</loc>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Aurora/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/Aurora/traps/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -106,20 +100,20 @@
     
         
     <url>
-     <loc>/Auto Scaling/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/Auto Scaling/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <loc>/Auto Scaling/introduction/</loc>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Auto Scaling/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/Auto Scaling/considerations/</loc>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -129,19 +123,19 @@
         
     <url>
      <loc>/Billing/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Billing/data-transfer-costs/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Billing/ec2-cost-management/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -151,25 +145,25 @@
         
     <url>
      <loc>/Certificate Manager/alternatives-and-lock-in/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Certificate Manager/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Certificate Manager/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Certificate Manager/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -179,31 +173,31 @@
         
     <url>
      <loc>/CloudFront/alternatives-and-lock-in/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/CloudFront/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/CloudFront/considerations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/CloudFront/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/CloudFront/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -213,31 +207,31 @@
         
     <url>
      <loc>/CloudWatch/alternatives-and-lock-in/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/CloudWatch/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/CloudWatch/cloudwatch-gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/CloudWatch/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/CloudWatch/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -247,31 +241,31 @@
         
     <url>
      <loc>/DynamoDB/alternatives-and-lock-in/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/DynamoDB/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/DynamoDB/considerations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/DynamoDB/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/DynamoDB/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -281,25 +275,25 @@
         
     <url>
      <loc>/EBS/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/EBS/ebs-gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/EBS/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/EBS/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -309,31 +303,31 @@
         
     <url>
      <loc>/EC2/alternatives-and-lock-in/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/EC2/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/EC2/ec2-gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/EC2/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/EC2/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -343,19 +337,19 @@
         
     <url>
      <loc>/ECS/alternatives-and-lock-in/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/ECS/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/ECS/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -365,25 +359,25 @@
         
     <url>
      <loc>/EFS/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/EFS/efs-gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/EFS/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/EFS/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -393,19 +387,19 @@
         
     <url>
      <loc>/Elastic IPs/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Elastic IPs/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Elastic IPs/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -415,19 +409,19 @@
         
     <url>
      <loc>/Elastic Load Balancer/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Elastic Load Balancer/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Elastic Load Balancer/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -437,7 +431,7 @@
         
     <url>
      <loc>/Further Reading/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -447,55 +441,55 @@
         
     <url>
      <loc>/General Information/aws-product-maturity-and-releases/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/General Information/common-concepts/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/General Information/compliance/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/General Information/getting-help-and-support/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/General Information/restrictions-and-other-notes/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/General Information/service-matrix/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/General Information/tools-and-services-market-landscape/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/General Information/when-to-use-aws/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/General Information/which-services-to-use/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -505,25 +499,25 @@
         
     <url>
      <loc>/Glacier/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Glacier/considerations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Glacier/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Glacier/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -533,13 +527,13 @@
         
     <url>
      <loc>/High Availability/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/High Availability/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -549,25 +543,25 @@
         
     <url>
      <loc>/KMS/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/KMS/considerations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/KMS/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/KMS/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -577,37 +571,37 @@
         
     <url>
      <loc>/Lambda/alternatives-and-lock-in/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Lambda/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Lambda/code-samples/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Lambda/considerations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Lambda/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Lambda/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -617,19 +611,19 @@
         
     <url>
      <loc>/Load Balancers/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Load Balancers/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Load Balancers/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -639,43 +633,43 @@
         
     <url>
      <loc>/Managing AWS/apis-and-sdks/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Managing AWS/aws-configuration-management/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Managing AWS/aws-console/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Managing AWS/boto/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Managing AWS/command-line-tools/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Managing AWS/general-visibility/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Managing AWS/managing-infrastructure-state-and-change/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -685,37 +679,37 @@
         
     <url>
      <loc>/Managing Servers And Applications/aws-vs-server-configuration/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Managing Servers And Applications/containers-and-aws/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Managing Servers And Applications/philosophy/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Managing Servers And Applications/server-configuration-management/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Managing Servers And Applications/tips-for-managing-servers/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Managing Servers And Applications/visibility/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -725,61 +719,61 @@
         
     <url>
      <loc>/RDS/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/RDS/considerations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/RDS/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/RDS/mysql-and-mariadb-basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/RDS/mysql-and-mariadb-gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/RDS/mysql-and-mariadb-tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/RDS/sql-server-basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/RDS/sql-server-gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/RDS/sql-server-tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/RDS/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -789,19 +783,19 @@
         
     <url>
      <loc>/Route53/alternatives-and-lock-in/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Route53/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Route53/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -811,31 +805,31 @@
         
     <url>
      <loc>/S3/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/S3/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/S3/s3-gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/S3/storage-durability-availability-and-price/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/S3/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -845,25 +839,25 @@
         
     <url>
      <loc>/SES/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/SES/considerations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/SES/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/SES/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -873,19 +867,19 @@
         
     <url>
      <loc>/Security And IAM/security-and-iam-basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Security And IAM/security-and-iam-gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/Security And IAM/security-and-iam-tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -895,19 +889,19 @@
         
     <url>
      <loc>/VPC Network Security/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/VPC Network Security/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/VPC Network Security/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -917,25 +911,25 @@
         
     <url>
      <loc>/WAF/basics/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/WAF/considerations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/WAF/gotchas-and-limitations/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/WAF/tips/</loc>
-     <lastmod>2017-03-06</lastmod>
+     <lastmod>2017-03-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

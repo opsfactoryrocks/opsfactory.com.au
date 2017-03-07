@@ -15,7 +15,7 @@
     
     
       
-        <title>Gotchas and limitations - Wisdom: AWS Guides</title>
+        <title>Introduction - Wisdom: AWS Guides</title>
       
     
     
@@ -59,7 +59,8 @@
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
         
-          <a href="../.." title="Wisdom: AWS Guides" class="md-icon md-icon--home md-header-nav__button">
+          <a href="../.." title="Wisdom: AWS Guides" class="md-logo md-header-nav__button">
+            <img src="../../of.png" width="24" height="24">
           </a>
         
       </div>
@@ -72,11 +73,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  Auto Scaling (DRAFT)
+                  Aurora
                 </span>
               
             
-            Gotchas and limitations
+            Introduction
           
         </span>
       </div>
@@ -122,7 +123,9 @@
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
     
-      <i class="md-icon md-icon--home md-nav__button"></i>
+      <i class="md-logo md-nav__button">
+        <img src="../../of.png">
+      </i>
     
     Wisdom: AWS Guides
   </label>
@@ -337,94 +340,22 @@
       
       
 
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
-    <label class="md-nav__link" for="nav-5">
-      Aurora (DRAFT)
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        Aurora (DRAFT)
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Aurora/basics/" title="Introduction" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Aurora/tips/" title="Tips" class="md-nav__link">
-      Tips
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Aurora/traps/" title="Traps" class="md-nav__link">
-      Traps
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
-    <label class="md-nav__link" for="nav-6">
-      Auto Scaling (DRAFT)
+    <label class="md-nav__link" for="nav-5">
+      Aurora
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
-        Auto Scaling (DRAFT)
+      <label class="md-nav__title" for="nav-5">
+        Aurora
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../basics/" title="Basics" class="md-nav__link">
-      Basics
-    </a>
-  </li>
-
         
           
           
@@ -437,9 +368,11 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
+      
     
-    <a href="./" title="Gotchas and limitations" class="md-nav__link md-nav__link--active">
-      Gotchas and limitations
+    
+    <a href="./" title="Introduction" class="md-nav__link md-nav__link--active">
+      Introduction
     </a>
     
   </li>
@@ -453,6 +386,66 @@
   <li class="md-nav__item">
     <a href="../tips/" title="Tips" class="md-nav__link">
       Tips
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Auto Scaling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Auto Scaling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Auto Scaling/introduction/" title="Basics" class="md-nav__link">
+      Basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Auto Scaling/tips/" title="Tips" class="md-nav__link">
+      Tips
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Auto Scaling/considerations/" title="Considerations" class="md-nav__link">
+      Considerations
     </a>
   </li>
 
@@ -2540,6 +2533,8 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
 </nav>
                   </div>
@@ -2552,10 +2547,20 @@
                
               
                 
-                  <h1>Gotchas and limitations</h1>
-                
-                <ul>
-<li><strong>ReplaceUnhealthy setting:</strong> By default, ASGs will kill instances that the EC2 instance manager considers to be unresponsive. It is possible for instances whose CPU is completely saturated for minutes at a time to appear to be unresponsive, causing an ASG with the default <a href="http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html#process-types">ReplaceUnhealthy setting</a> turned on to replace them. When instances that are managed by ASGs are expected to consistently run with very high CPU, consider deactivating this setting. If you do so, however, detecting and killing unhealthy nodes will become your responsibility.</li>
+                <p>Aurora is Amazon's proprietary fork of MySQL intended to scale up for high concurrency workloads. Generally speaking, individual query performance under Aurora is not expected to improve significantly relative to MySQL or MariaDB, but Aurora is intended to maintain performance while executing many more queries concurrently than an equivalent MySQL or MariaDB server could handle.</p>
+<h1 id="notable-features">Notable features</h1>
+<ul>
+<li>Log-structured storage instead of B-trees to improve write performance</li>
+<li>Out-of-process buffer pool so that databases instances can be restarted without clearing the buffer pool</li>
+<li>The underlying physical storage is a specialized SSD array that automatically maintains 6 copies of your data across 3 AZs</li>
+<li>Aurora read replicas share the storage layer with the write master which significantly reduces replica lag, eliminates the need for the master to write and distribute the binary log for replication, and allows for zero-data-loss failovers from the master to a replica. The master and all the read replicas that share storage are known collectively as an <strong>Aurora cluster</strong></li>
+</ul>
+<h1 id="primary-links">Primary Links</h1>
+<ul>
+<li><a href="https://aws.amazon.com/rds/aurora/details/">Homepage</a></li>
+<li><a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html">Documentation</a></li>
+<li><a href="https://aws.amazon.com/rds/aurora/faqs/">FAQ</a></li>
+<li><a href="https://aws.amazon.com/rds/aurora/pricing/">Pricing</a></li>
 </ul>
               
               
@@ -2570,7 +2575,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../basics/" title="Basics" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../Application Load Balancer/considerations/" title="Considerations" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2579,7 +2584,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Basics
+                Considerations
               </span>
             </div>
           </a>

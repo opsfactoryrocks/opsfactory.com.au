@@ -216,34 +216,99 @@
             "title": "VPC Only"
         }, 
         {
-            "location": "/Aurora/basics/", 
-            "text": "Amazons proprietary fork of MySQL intended to scale up for high concurrency workloads. Generally speaking, individual query performance under Aurora is not expected to improve significantly relative to MySQL or MariaDB, but Aurora is intended to maintain performance while executing many more queries concurrently than an equivalent MySQL or MariaDB server could handle.\n\n\nNotable new features\n include:\n\n\nLog-structured storage instead of B-trees to improve write performance\n\n\nOut-of-process buffer pool so that databases instances can be restarted without clearing the buffer pool\n\n\nThe underlying physical storage is a specialized SSD array that automatically maintains 6 copies of your data across 3 AZs.\n\n\nAurora read replicas share the storage layer with the write master which significantly reduces replica lag, eliminates the need for the master to write and distribute the binary log for replication, and allows for zero-data-loss failovers from the master to a replica. The master and all the read replicas that share storage are known collectively as an \nAurora cluster\n.", 
+            "location": "/Aurora/introduction/", 
+            "text": "Aurora is Amazon's proprietary fork of MySQL intended to scale up for high concurrency workloads. Generally speaking, individual query performance under Aurora is not expected to improve significantly relative to MySQL or MariaDB, but Aurora is intended to maintain performance while executing many more queries concurrently than an equivalent MySQL or MariaDB server could handle.\n\n\nNotable features\n\n\n\n\nLog-structured storage instead of B-trees to improve write performance\n\n\nOut-of-process buffer pool so that databases instances can be restarted without clearing the buffer pool\n\n\nThe underlying physical storage is a specialized SSD array that automatically maintains 6 copies of your data across 3 AZs\n\n\nAurora read replicas share the storage layer with the write master which significantly reduces replica lag, eliminates the need for the master to write and distribute the binary log for replication, and allows for zero-data-loss failovers from the master to a replica. The master and all the read replicas that share storage are known collectively as an \nAurora cluster\n\n\n\n\nPrimary Links\n\n\n\n\nHomepage\n\n\nDocumentation\n\n\nFAQ\n\n\nPricing", 
             "title": "Introduction"
         }, 
         {
+            "location": "/Aurora/introduction/#notable-features", 
+            "text": "Log-structured storage instead of B-trees to improve write performance  Out-of-process buffer pool so that databases instances can be restarted without clearing the buffer pool  The underlying physical storage is a specialized SSD array that automatically maintains 6 copies of your data across 3 AZs  Aurora read replicas share the storage layer with the write master which significantly reduces replica lag, eliminates the need for the master to write and distribute the binary log for replication, and allows for zero-data-loss failovers from the master to a replica. The master and all the read replicas that share storage are known collectively as an  Aurora cluster", 
+            "title": "Notable features"
+        }, 
+        {
+            "location": "/Aurora/introduction/#primary-links", 
+            "text": "Homepage  Documentation  FAQ  Pricing", 
+            "title": "Primary Links"
+        }, 
+        {
             "location": "/Aurora/tips/", 
-            "text": "In order to take advantage of Auroras higher concurrency, applications should be configured with large database connection pools and should execute as many queries concurrently as possible. For example, Aurora servers have been tested to produce increasing performance on some OLTP workloads with \nup to 5,000 connections\n.\n\n\nAurora scales well with multiple CPUs\n and may require a large instance class for optimal performance.\n\n\nBecause Aurora is based on MySQL 5.6.10, avoiding any MySQL features from 5.7 or later will ease the transition from a MySQL-compatible database into Aurora.\n\n\nThe easiest migration path to Aurora is restoring a database snapshot from MySQL 5.6. The next easiest method is restoring a dump from a MySQL-compatible database such as MariaDB. For \nlow-downtime migrations\n from other MySQL-compatible databases, you can set up an Aurora instance as a replica of your existing database. If none of those methods are options, Amazon offers a fee-based data migration service.\n\n\nYou can replicate \nfrom an Aurora cluster to MySQL or to another Aurora cluster\n. This requires binary logging to be enabled and is not as performant as native Aurora replication.", 
+            "text": "Architect for higher concurrency\n\n\nIn order to take advantage of Auroras higher concurrency, applications should be configured with large database connection pools and should execute as many queries concurrently as possible. For example, Aurora servers have been tested to produce increasing performance on some OLTP workloads with \nup to 5,000 connections\n.\n\n\nMulti-CPU scaling\n\n\nAurora scales well with multiple CPUs\n and may require a large instance class for optimal performance\n\n\nAvoid MySQL 5.7 features\n\n\nBecause Aurora is based on MySQL 5.6.10, avoiding any MySQL features from 5.7 or later will ease the transition from a MySQL-compatible database into Aurora.\n\n\nUse snapshots for migration\n\n\nThe easiest migration path to Aurora is restoring a database snapshot from MySQL 5.6. The next easiest method is restoring a dump from a MySQL-compatible database such as MariaDB. For \nlow-downtime migrations\n from other MySQL-compatible databases, you can set up an Aurora instance as a replica of your existing database. If none of those methods are options, Amazon offers a fee-based data migration service.\n\n\nNon-native replication\n\n\nYou can replicate \nfrom an Aurora cluster to MySQL or to another Aurora cluster\n. This requires binary logging to be enabled and is not as performant as native Aurora replication.", 
             "title": "Tips"
         }, 
         {
-            "location": "/Aurora/traps/", 
-            "text": "Aurora is based on MySQL 5.6.10\n with some cherry-picking of later MySQL features. It is missing most 5.7 features as well as some online DDL features introduced in 5.6.17.", 
-            "title": "Traps"
+            "location": "/Aurora/tips/#architect-for-higher-concurrency", 
+            "text": "In order to take advantage of Auroras higher concurrency, applications should be configured with large database connection pools and should execute as many queries concurrently as possible. For example, Aurora servers have been tested to produce increasing performance on some OLTP workloads with  up to 5,000 connections .", 
+            "title": "Architect for higher concurrency"
         }, 
         {
-            "location": "/Auto Scaling/basics/", 
-            "text": "Homepage\n  \nUser guide\n  \nFAQ\n  \nPricing\n at no additional charge\n\n\nAuto Scaling Groups (ASGs)\n are used to control the number of instances in a service, reducing manual effort to provision or deprovision EC2 instances.\n\n\nThey can be configured through \nScaling Policies\n to automatically increase or decrease instance counts based on metrics like CPU utilization, or based on a schedule.\n\n\nThere are three common ways of using ASGs - dynamic (automatically adjust instance count based on metrics for things like CPU utilization), static (maintain a specific instance count at all times), scheduled (maintain different instance counts at different times of day or on days of the week).\n\n\nASGs \nhave no additional charge\n themselves; you pay for underlying EC2 and CloudWatch services.", 
+            "location": "/Aurora/tips/#multi-cpu-scaling", 
+            "text": "Aurora scales well with multiple CPUs  and may require a large instance class for optimal performance", 
+            "title": "Multi-CPU scaling"
+        }, 
+        {
+            "location": "/Aurora/tips/#avoid-mysql-57-features", 
+            "text": "Because Aurora is based on MySQL 5.6.10, avoiding any MySQL features from 5.7 or later will ease the transition from a MySQL-compatible database into Aurora.", 
+            "title": "Avoid MySQL 5.7 features"
+        }, 
+        {
+            "location": "/Aurora/tips/#use-snapshots-for-migration", 
+            "text": "The easiest migration path to Aurora is restoring a database snapshot from MySQL 5.6. The next easiest method is restoring a dump from a MySQL-compatible database such as MariaDB. For  low-downtime migrations  from other MySQL-compatible databases, you can set up an Aurora instance as a replica of your existing database. If none of those methods are options, Amazon offers a fee-based data migration service.", 
+            "title": "Use snapshots for migration"
+        }, 
+        {
+            "location": "/Aurora/tips/#non-native-replication", 
+            "text": "You can replicate  from an Aurora cluster to MySQL or to another Aurora cluster . This requires binary logging to be enabled and is not as performant as native Aurora replication.", 
+            "title": "Non-native replication"
+        }, 
+        {
+            "location": "/Auto Scaling/introduction/", 
+            "text": "Auto Scaling Groups (ASGs)\n are used to control the number of instances in a service, reducing manual effort to provision or deprovision EC2 instances.\n\n\nThey can be configured through \nScaling Policies\n to automatically increase or decrease instance counts based on metrics like CPU utilization, or based on a schedule.\n\n\nThere are three common ways of using ASGs:\n\n\n\n\nDynamically: automatically adjust the instance count based on metrics for things like CPU utilization;\n\n\nStatically: maintain a specific instance count at all times;\n\n\nScheduled: maintain different instance counts at different times of day or on days of the week\n\n\n\n\nASGs \nhave no additional charge\n themselves; you pay for underlying EC2 and CloudWatch services.\n\n\nPrimary Links\n\n\n\n\nHomepage\n\n\nUser guide\n\n\nFAQ\n\n\nPricing\n at no additional charge", 
             "title": "Basics"
         }, 
         {
-            "location": "/Auto Scaling/gotchas-and-limitations/", 
-            "text": "ReplaceUnhealthy setting:\n By default, ASGs will kill instances that the EC2 instance manager considers to be unresponsive. It is possible for instances whose CPU is completely saturated for minutes at a time to appear to be unresponsive, causing an ASG with the default \nReplaceUnhealthy setting\n turned on to replace them. When instances that are managed by ASGs are expected to consistently run with very high CPU, consider deactivating this setting. If you do so, however, detecting and killing unhealthy nodes will become your responsibility.", 
-            "title": "Gotchas and limitations"
+            "location": "/Auto Scaling/introduction/#primary-links", 
+            "text": "Homepage  User guide  FAQ  Pricing  at no additional charge", 
+            "title": "Primary Links"
         }, 
         {
             "location": "/Auto Scaling/tips/", 
-            "text": "Better matching your cluster size to your current resource requirements through use of ASGs can result in significant cost savings for many types of workloads.\n\n\nPairing ASGs with CLBs is a common pattern used to deal with changes in the amount of traffic a service receives.\n\n\nDynamic Auto Scaling is easiest to use with stateless, horizontally scalable services.\n\n\nEven if you are not using ASGs to dynamically increase or decrease instance counts, you should seriously consider maintaining all instances inside of ASGs  given a target instance count, the ASG will work to ensure that number of instances running is equal to that target, replacing instances for you if they die or are marked as being unhealthy. This results in consistent capacity and better stability for your service.\n\n\nAutoscalers can be \nconfigured to terminate\n instances that a CLB or ALB has marked as being unhealthy.", 
+            "text": "Right size your ASGs\n\n\nIf you match your ASGs to your current highest possible load, then use scaling policies and schedules to match busy times of the day/week, then you can drastically reduce your operating costs.\n\n\nASGs \n CLBs\n\n\nPairing ASGs with Classic Load Balancers (CLBs) is a common pattern used to deal with changes in the amount of traffic a service receives.\n\n\nStateless Auto Scaling\n\n\nDynamic Auto Scaling is easiest to use with stateless, horizontally scalable services.\n\n\nMaintain a certain head count\n\n\nEven if you are not using ASGs to dynamically increase or decrease instance counts, you should seriously consider maintaining all instances inside of ASGs  given a target instance count, the ASG will work to ensure that number of instances running is equal to that target, replacing instances for you if they die or are marked as being unhealthy. This results in consistent capacity and better stability for your service.\n\n\nAnother benefit is Availability Zone outages: an ASG will bring up a new instance if one goes down in another AZ (provided your ASG is across at least two AZs.)\n\n\nAuto termination\n\n\nAutoscalers can be \nconfigured to terminate\n instances that a CLB or ALB has marked as being unhealthy.", 
             "title": "Tips"
+        }, 
+        {
+            "location": "/Auto Scaling/tips/#right-size-your-asgs", 
+            "text": "If you match your ASGs to your current highest possible load, then use scaling policies and schedules to match busy times of the day/week, then you can drastically reduce your operating costs.", 
+            "title": "Right size your ASGs"
+        }, 
+        {
+            "location": "/Auto Scaling/tips/#asgs-clbs", 
+            "text": "Pairing ASGs with Classic Load Balancers (CLBs) is a common pattern used to deal with changes in the amount of traffic a service receives.", 
+            "title": "ASGs &amp; CLBs"
+        }, 
+        {
+            "location": "/Auto Scaling/tips/#stateless-auto-scaling", 
+            "text": "Dynamic Auto Scaling is easiest to use with stateless, horizontally scalable services.", 
+            "title": "Stateless Auto Scaling"
+        }, 
+        {
+            "location": "/Auto Scaling/tips/#maintain-a-certain-head-count", 
+            "text": "Even if you are not using ASGs to dynamically increase or decrease instance counts, you should seriously consider maintaining all instances inside of ASGs  given a target instance count, the ASG will work to ensure that number of instances running is equal to that target, replacing instances for you if they die or are marked as being unhealthy. This results in consistent capacity and better stability for your service.  Another benefit is Availability Zone outages: an ASG will bring up a new instance if one goes down in another AZ (provided your ASG is across at least two AZs.)", 
+            "title": "Maintain a certain head count"
+        }, 
+        {
+            "location": "/Auto Scaling/tips/#auto-termination", 
+            "text": "Autoscalers can be  configured to terminate  instances that a CLB or ALB has marked as being unhealthy.", 
+            "title": "Auto termination"
+        }, 
+        {
+            "location": "/Auto Scaling/considerations/", 
+            "text": "ReplaceUnhealthy setting\n\n\nBy default, ASGs will kill instances that the EC2 instance manager considers to be unresponsive. It is possible for instances whose CPU is completely saturated for minutes at a time to appear to be unresponsive, causing an ASG with the default \nReplaceUnhealthy setting\n turned on to replace them. When instances that are managed by ASGs are expected to consistently run with very high CPU, consider deactivating this setting. \nIf you do so, however, detecting and killing unhealthy nodes will become your responsibility.", 
+            "title": "Considerations"
+        }, 
+        {
+            "location": "/Auto Scaling/considerations/#replaceunhealthy-setting", 
+            "text": "By default, ASGs will kill instances that the EC2 instance manager considers to be unresponsive. It is possible for instances whose CPU is completely saturated for minutes at a time to appear to be unresponsive, causing an ASG with the default  ReplaceUnhealthy setting  turned on to replace them. When instances that are managed by ASGs are expected to consistently run with very high CPU, consider deactivating this setting.  If you do so, however, detecting and killing unhealthy nodes will become your responsibility.", 
+            "title": "ReplaceUnhealthy setting"
         }, 
         {
             "location": "/Billing/basics/", 

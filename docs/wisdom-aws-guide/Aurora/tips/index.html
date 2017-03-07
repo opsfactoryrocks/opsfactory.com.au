@@ -59,7 +59,8 @@
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
         
-          <a href="../.." title="Wisdom: AWS Guides" class="md-icon md-icon--home md-header-nav__button">
+          <a href="../.." title="Wisdom: AWS Guides" class="md-logo md-header-nav__button">
+            <img src="../../of.png" width="24" height="24">
           </a>
         
       </div>
@@ -72,7 +73,7 @@
             
               
                 <span class="md-header-nav__parent">
-                  Aurora (DRAFT)
+                  Aurora
                 </span>
               
             
@@ -122,7 +123,9 @@
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
     
-      <i class="md-icon md-icon--home md-nav__button"></i>
+      <i class="md-logo md-nav__button">
+        <img src="../../of.png">
+      </i>
     
     Wisdom: AWS Guides
   </label>
@@ -345,11 +348,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
     <label class="md-nav__link" for="nav-5">
-      Aurora (DRAFT)
+      Aurora
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
-        Aurora (DRAFT)
+        Aurora
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -360,7 +363,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../basics/" title="Introduction" class="md-nav__link">
+    <a href="../introduction/" title="Introduction" class="md-nav__link">
       Introduction
     </a>
   </li>
@@ -377,23 +380,13 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
+      
+    
     
     <a href="./" title="Tips" class="md-nav__link md-nav__link--active">
       Tips
     </a>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../traps/" title="Traps" class="md-nav__link">
-      Traps
-    </a>
   </li>
 
         
@@ -412,11 +405,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
-      Auto Scaling (DRAFT)
+      Auto Scaling
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
-        Auto Scaling (DRAFT)
+        Auto Scaling
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -427,20 +420,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Auto Scaling/basics/" title="Basics" class="md-nav__link">
+    <a href="../../Auto Scaling/introduction/" title="Basics" class="md-nav__link">
       Basics
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../Auto Scaling/gotchas-and-limitations/" title="Gotchas and limitations" class="md-nav__link">
-      Gotchas and limitations
     </a>
   </li>
 
@@ -453,6 +434,18 @@
   <li class="md-nav__item">
     <a href="../../Auto Scaling/tips/" title="Tips" class="md-nav__link">
       Tips
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Auto Scaling/considerations/" title="Considerations" class="md-nav__link">
+      Considerations
     </a>
   </li>
 
@@ -2540,6 +2533,8 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
 </nav>
                   </div>
@@ -2552,15 +2547,16 @@
                
               
                 
-                  <h1>Tips</h1>
-                
-                <ul>
-<li>In order to take advantage of Auroras higher concurrency, applications should be configured with large database connection pools and should execute as many queries concurrently as possible. For example, Aurora servers have been tested to produce increasing performance on some OLTP workloads with <a href="http://www.slideshare.net/AmazonWebServices/amazon-aurora-amazons-new-relational-database-engine/31">up to 5,000 connections</a>.</li>
-<li><a href="https://www.percona.com/blog/2016/05/26/aws-aurora-benchmarking-part-2/">Aurora scales well with multiple CPUs</a> and may require a large instance class for optimal performance.</li>
-<li>Because Aurora is based on MySQL 5.6.10, avoiding any MySQL features from 5.7 or later will ease the transition from a MySQL-compatible database into Aurora.</li>
-<li>The easiest migration path to Aurora is restoring a database snapshot from MySQL 5.6. The next easiest method is restoring a dump from a MySQL-compatible database such as MariaDB. For <a href="http://cantrill.io/howto/aws/2016/06/06/migrating-from-mysql-to-aurora-with-almost-no-downtime.html">low-downtime migrations</a> from other MySQL-compatible databases, you can set up an Aurora instance as a replica of your existing database. If none of those methods are options, Amazon offers a fee-based data migration service.</li>
-<li>You can replicate <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Overview.Replication.MySQLReplication.html">from an Aurora cluster to MySQL or to another Aurora cluster</a>. This requires binary logging to be enabled and is not as performant as native Aurora replication.</li>
-</ul>
+                <h1 id="architect-for-higher-concurrency">Architect for higher concurrency</h1>
+<p>In order to take advantage of Auroras higher concurrency, applications should be configured with large database connection pools and should execute as many queries concurrently as possible. For example, Aurora servers have been tested to produce increasing performance on some OLTP workloads with <a href="http://www.slideshare.net/AmazonWebServices/amazon-aurora-amazons-new-relational-database-engine/31">up to 5,000 connections</a>.</p>
+<h1 id="multi-cpu-scaling">Multi-CPU scaling</h1>
+<p><a href="https://www.percona.com/blog/2016/05/26/aws-aurora-benchmarking-part-2/">Aurora scales well with multiple CPUs</a> and may require a large instance class for optimal performance</p>
+<h1 id="avoid-mysql-57-features">Avoid MySQL 5.7 features</h1>
+<p>Because Aurora is based on MySQL 5.6.10, avoiding any MySQL features from 5.7 or later will ease the transition from a MySQL-compatible database into Aurora.</p>
+<h1 id="use-snapshots-for-migration">Use snapshots for migration</h1>
+<p>The easiest migration path to Aurora is restoring a database snapshot from MySQL 5.6. The next easiest method is restoring a dump from a MySQL-compatible database such as MariaDB. For <a href="http://cantrill.io/howto/aws/2016/06/06/migrating-from-mysql-to-aurora-with-almost-no-downtime.html">low-downtime migrations</a> from other MySQL-compatible databases, you can set up an Aurora instance as a replica of your existing database. If none of those methods are options, Amazon offers a fee-based data migration service.</p>
+<h1 id="non-native-replication">Non-native replication</h1>
+<p>You can replicate <a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Overview.Replication.MySQLReplication.html">from an Aurora cluster to MySQL or to another Aurora cluster</a>. This requires binary logging to be enabled and is not as performant as native Aurora replication.</p>
               
               
             </article>
@@ -2574,7 +2570,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../basics/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../introduction/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2589,13 +2585,13 @@
           </a>
         
         
-          <a href="../traps/" title="Traps" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../Auto Scaling/introduction/" title="Basics" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Traps
+                Basics
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
