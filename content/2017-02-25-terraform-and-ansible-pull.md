@@ -67,20 +67,6 @@ The process of provisioning the system is the first stage to the management of t
 ### Updating
 The process of updating the system in place is somewhat optional in this architecture. Some people don't like the idea of updating infrastructure in place, especially now with the ease of implementing CI/CD processes; automation tools; testing; and so on. Feel free to omit this option.
 
-## Push, pull, and perhaps pull later
-The first stage of the provisioning process is about getting the new system setup and configured to fulfill its role within the network. This is done by executing the correct Ansible Roles against the system and getting the correct state in place. Once complete, the system should be serving traffic or grabbing and dealing with work from a queue (for example.)
-
-Once complete, there may be a need to quickly and easily update the system later on. This is why we need a second Playbook - I want to be able to update certain Roles and Playbooks and have them executed across the network, on the right systems, a few minutes later.
-
-Despite what some people may tell you, **it's OK to update state in place.**
-
-### About that "pull later" bit
-The pull later aspect of this solution can be seen as somewhat of a fail safe, a back door, or simply me covering my arse. Or perhaps the process of building and configuring, only to rebuild and reconfigure again very soon after gets tiresome quickly, especially when the new state is a simple change.
-
-The second Playbook can be used for a very simple changes which are not only propagated to new systems when they're built in the future, but also to existing systems in the here and now. I believe this is an important option to have and it is just that: **optional.**
-
-My primary goal when implementing this part of the solution was as a way of controlling access to the system through user management. It's a completely optional part and boils down to personal preference.
-
 ## That's the basics
 With the right amount of consideration, the `ansible-pull` model of working is rather quite simple, easy to grasp and implement, and uses tools already present in the network (most likely, anyway.)
 
