@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Keep Your Tools Simple - Ops Factory</title>
+        <meta charset="utf-8" />
+        <link href="http://opsfactory.com.au/theme/css/cosmo.bootstrap.min.css" rel="stylesheet" />
+        <link href="http://opsfactory.com.au/theme/css/style.css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    </head>
+
+    <body id="index" class="archive">
+        <div class="container">
+            <div class="header">
+                <center>
+                    <a href="http://opsfactory.com.au">
+                        <img src="http://opsfactory.com.au/theme/images/of-logo.png" width="100" height="100" alt="Ops Factory" />
+                    </a>
+                </center>
+            </div>
+<!--             <ul class="nav nav-pills">
+                <li class="" role="presentation"><a href="http://opsfactory.com.au">Home</a></li>
+                <li><a href="http://opsfactory.com.au/archives.html">Archives</a></li>
+            </ul> -->
+<section id="content" class="article content">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://opsfactory.com.au/simple-tooling.html" rel="bookmark"
+         title="Permalink to Keep Your Tools Simple">Keep Your Tools Simple</a></h2>
+ 
+  </header>
+  
+     
+  <div class="entry-content">
+    <p>As time goes on in our industry more tools, frameworks, and libraries make themselves known and some even go on to become popular. In rare cases, a few become industry standard tools and appear in job advertisements and demand high salaries for expertise. I use a few select tools on a near daily basis and they definitely count among the (fast becoming) industry standard: Ansible and Terraform.</p>
+<p>Ansible is an excellent tool for configuration management tasks at the OS level and beyond. It's core utilities offer stable management of files, users, packages, services, firewalls, and much more.</p>
+<p>Terraform is my tool of choice for anything below the OS and beyond. It's HCL language is easy to write and very descriptive. It's AST offers a great advantage over using Ansible for the same infrastructure tasks, and it supports a large range of providers from compute resources to DNS.</p>
+<p>To keep things simple, I leave Ansible out of the infrastructure equation and I keep Terraform away from the OS. Other people don't follow this methodology, instead favouring Ansible as their goto infrastructure building and management tool as well as their OS and software configuration management utility. It's their kitchen sink with a built in espresso machine and pencil sharper.</p>
+<h2>But, but...</h2>
+<p>There are no buts. One tool for one job. If you one tool does one job and it's refined and sharper to do that job well over the course of years, it excels at that one job.</p>
+<p>If you were to use Terraform to not only build your EC2 instances but also use whatever native methods is has available for configuring the OS' state, you would have one HCL code base. This code base would build your servers and configure them too. That would be nice, but alas <strong>Terraform wasn't designed</strong> to be a CM tool. It's designed to build the data centre level resources.</p>
+<p>Now take Ansible and apply the same logic: use it to build out your EC2 instances and configure the base OS state. Actually, Ansible has both forms of functionality native to it, because it has (none core) AWS modules and (core) modules for state management. Now you'd have a large collection of state files consisting of YAML. Problem is Ansible's not really designed for or good at managing infrastructure. It's designed to manage state at the OS and above, and it's very good at it.</p>
+<p>Just because I CAN weld a tin opener to the side of my oven, it doesn't mean I should. And if someone sneaks into my house and does it for me (please don't), I still aint going to use it (the tin opener that is. I'll still use the oven.)</p>
+<h3>Ansible's Core Purpose</h3>
+<p>Time and effort has been put into Ansible since its inception. It's good at supporting very low level OS tasks such as package management, services, users, files and file systems, processes, disks, and more. These modules are rock solid because they've been developed and tested a lot.</p>
+<p>The infrastructure modules are extras and they've kind of been bolted onto the side in recent years. They certainly work -- I know they work, I've used them -- but a lot of logic has to be build around them to get the same, but <strong>much weaker</strong>, functionality that a purpose built tool gives you.</p>
+<p>An analogy might be a hammer that has a screw driver duck taped onto the side of it. Now you can throw away your individual hammer and spanner, and simply buy the all new Spammer (what a name!) Just keep in mind that you'll need to develop some extra dexterity whilst operating the Spammer, and safety can go out the window too.</p>
+<h3>Terraform's Core Purpose</h3>
+<p>HashiCorp developed Terraform with the data centre in mind. They wanted it to manage infrastructure and nothing more. They've achieved this objective very well and you won't find HashiCorp adding features just because they can - it's a tool for doing one job and doing it really well.</p>
+<p>If Terraform is the hammer, then Ansible is your paint brush, roll of wallpaper, and maybe even your furniture.</p>
+<h2>Cleaner, Simplier Code</h2>
+<p>When I keep my Ansible Roles and Playbooks all nicely separated, and my state clear of any extra modules, I end up with a very simple configuration base to work with. The Roles are simple, the state is simple, everything is simple.</p>
+<p>By keeping my Terraform code just about infrastructure, the code base is simple and easy to follow. The two can be connected in many ways, but keeping to one task per tool I achieve what I believe to be nirvana in the DevOps space.</p>
+<p>Reading my Ansible state, Roles, and so on, is easy. The logic is kept to a minimum where possible and the Roles are a breeze to read.</p>
+<p>Reading my Terraform code base with its modules and such is easy too. It's not hard to find what you need and understand what's happening.</p>
+<h2>It's all in the AST</h2>
+<p>Ultimately though, what really does it for me is Terraform's Abstract Syntax Tree. This is one of its killer features and it blows Ansible (and Chef and Puppet, or any CM tool for that matter) out of the water when it comes to infrastructure state management.</p>
+<p>In short, I can define some state locally, apply it remotely and even the smallest of changes can be pointed out with a simple <code>terraform plan</code>. I get a report telling me exctly what has changed, regardless of the resource or detail I'm changing, and what has to be done to achieve the desired state. <strong>This is important</strong> because I'll be able to understand if an EIP must be destroyed and recreated due to my change; an EBS volume must be detached and reattached because a bit was flipped; or if a DNS record will change because of an EC2 instance being destroyed.</p>
+<p><strong>Ansible doesn't do this.</strong></p>
+<p>When something changes in my YAML files, Ansible simply checks if the remote state matches what I have locally and if not, it changes it. Well actually that's kind of fine... sort of.</p>
+<p>If I have a single file which is critical to the operation of a server, let's say the <code>/etc/hosts</code> file, and I change it through Ansible's <code>lineinfile</code> module, what check is done to ensure something else I'm configuring with Ansible won't break? If I'm defining a DNS lookup in that file for <code>master-database</code> and then in the configuration for a Wordpress role I'm setting the DNS to point at that line, my future change to remove this line isn't picked up. My Wordpress just went down.</p>
+<p>When using Ansible's mildly "OK" AWS modules, what check is done to confirm the EIP attached to an EC2 instance should be released if the EC2 instance is deleted? If I run <code>ansible</code> and do an adhoc command to remove the EC2 instance, any logic inside the Playbooks and Roles goes out the window. One can only hope the AWS API will complain about the EIP and save the day. That's not an ideal safety net.</p>
+<h2>Do it anyway</h2>
+<p>Ultimately whatever works for you should be kept in place. I'm certainly not asking anyone to change the way they work or stop what they're doing. This is just food for thought; something to think about, or not; and maybe just discuss among your local peers.</p>
+<h2><a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a></h2>
+<p>Use purpose built tools. Stop trying to make one thing do everything for you. Your life will get easier, I promise.</p>
+  </div><!-- /.entry-content -->
+   <footer class="post-info text-muted">
+    Posted on <abbr class="published" title="2017-03-14T00:00:00+10:00">
+      Tue 14 March 2017
+    </abbr>
+    <address class="vcard author">
+      by <a class="url fn" href="http://opsfactory.com.au/author/michael-crilly.html">Michael Crilly</a>
+    </address> in <a href="http://opsfactory.com.au/category/tools.html">Tools</a> Tagged <a href="http://opsfactory.com.au/tag/tools.html">tools </a><a href="http://opsfactory.com.au/tag/development.html">development </a><a href="http://opsfactory.com.au/tag/systems.html">systems </a>  </footer><!-- /.post-info -->
+</section>
+    <div class="comment">
+        <div id="disqus_thread"></div> <!-- comment app container -->
+    </div>
+	<!-- Comment BEGIN -->
+    <script type="text/javascript">
+        var disqus_shortname = 'opsfactoryau'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <!-- Comment END -->
+            <footer id="contentinfo" class="footer">
+                    <!-- <nav class="pull-right bottom-nav">
+                        <a href="http://opsfactory.com.au/None">RSS</a>
+                    </nav> -->
+                    <address id="about" class="vcard body">
+                    &copy; <a href="http://opsfactory.com.au">Ops Factory</a> Proudly powered by <a href="http://getpelican.com/">Pelican</a>
+                    </address><!-- /#about -->
+            </footer><!-- /#contentinfo -->
+        </div><!-- container -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+	var pageTracker = _gat._getTracker("UA-92774518-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+    </body>
+</html>
